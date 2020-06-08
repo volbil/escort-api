@@ -13,7 +13,6 @@ class Block():
             data.pop("result")
             data["result"] = utils.make_request("getblock", [txid])["result"]
             data["result"]["txcount"] = len(data["result"]["tx"])
-            data["result"].pop("nTx")
 
         return data
 
@@ -23,7 +22,6 @@ class Block():
 
         if data["error"] is None:
             data["result"]["txcount"] = len(data["result"]["tx"])
-            data["result"].pop("nTx")
 
         return data
 
@@ -45,7 +43,6 @@ class Block():
                 data["result"] = utils.make_request("getblock", [bhash])["result"]
                 data["result"]["nethash"] = int(nethash["result"])
                 data["result"]["txcount"] = len(data["result"]["tx"])
-                data["result"].pop("nTx")
 
                 result.append(data["result"])
 
