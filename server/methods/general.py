@@ -11,15 +11,8 @@ class General():
         if data["error"] is None:
             data["result"]["supply"] = utils.supply(data["result"]["blocks"])["supply"]
             data["result"]["reward"] = utils.reward(data["result"]["blocks"])
-            data["result"].pop("verificationprogress")
-            data["result"].pop("initialblockdownload")
-            data["result"].pop("pruned")
-            data["result"].pop("softforks")
-            data["result"].pop("bip9_softforks")
-            data["result"].pop("warnings")
-            data["result"].pop("size_on_disk")
 
-            nethash = utils.make_request("getnetworkhashps", [120, data["result"]["blocks"]])
+            nethash = utils.make_request("getnetworkhashps", [6, data["result"]["blocks"]])
             if nethash["error"] is None:
                 data["result"]["nethash"] = int(nethash["result"])
 
